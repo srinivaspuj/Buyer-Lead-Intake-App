@@ -6,10 +6,11 @@ import { buyerSchema } from '@/lib/validations';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const [buyer] = await db.select().from(buyers).where(eq(buyers.id, params.id));
+    const { id } = await params;
+    const [buyer] = await db.select().from(buyers).where(eq(buyers.id, id));
     
     if (!buyer) {
       return NextResponse.json({ error: 'Buyer not found' }, { status: 404 });
@@ -23,9 +24,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const formData = await request.formData();
     const data = Object.fromEntries(formData.entries());
     
@@ -38,7 +40,7 @@ export async function PUT(
         budgetMax: validatedData.budgetMax ? Number(validatedData.budgetMax) : undefined,
         updatedAt: new Date(),
       })
-      .where(eq(buyers.id, params.id))
+      .where(eq(buyers.id, id))
       .returning();
 
     if (!updatedBuyer) {
