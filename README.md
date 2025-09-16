@@ -1,4 +1,4 @@
-# Buyer Lead Management System
+# Buyer Lead Intake App
 
 **100% Complete Implementation** - A production-ready lead management application meeting all specified requirements.
 
