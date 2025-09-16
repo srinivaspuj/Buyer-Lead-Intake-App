@@ -5,13 +5,11 @@ const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: 'demo',
-      credentials: {
-        email: { label: 'Email', type: 'email' },
-      },
-      async authorize(credentials) {
+      credentials: {},
+      async authorize() {
         return {
           id: 'demo-user-id',
-          email: credentials?.email || 'demo@example.com',
+          email: 'demo@example.com',
           name: 'Demo User',
         };
       },
@@ -19,20 +17,6 @@ const handler = NextAuth({
   ],
   session: {
     strategy: 'jwt',
-  },
-  callbacks: {
-    async session({ session, token }) {
-      if (token && session.user) {
-        (session.user as any).id = token.sub || 'demo-user-id';
-      }
-      return session;
-    },
-    async jwt({ token, user }) {
-      if (user) {
-        token.sub = user.id;
-      }
-      return token;
-    },
   },
 });
 

@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "app/api/**/*.js": {
+      "maxDuration": 10
+    }
+  },
+  "env": {
+    "NEXTAUTH_URL": "https://buyer-lead-intake-app.vercel.app",
+    "NEXTAUTH_SECRET": "your-production-secret-key-here"
+  }
+}
