@@ -83,7 +83,7 @@ export async function importCSV(csvContent: string, userId: string): Promise<CSV
           ownerId: userId,
         });
       }
-    } catch (error) {
+    } catch {
       errors.push({
         row: rowNumber,
         field: 'general',
@@ -130,7 +130,7 @@ export async function importCSV(csvContent: string, userId: string): Promise<CSV
       imported: importedBuyers.length,
       errors: [],
     };
-  } catch (error) {
+  } catch {
     return {
       success: false,
       imported: 0,

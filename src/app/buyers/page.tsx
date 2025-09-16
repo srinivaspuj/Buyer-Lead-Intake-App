@@ -37,7 +37,7 @@ export default function BuyersPage() {
   const { status } = useSession();
   const [buyers, setBuyers] = useState<Buyer[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
   const [searchParams, setSearchParams] = useState({
     search: '',
     city: '',
