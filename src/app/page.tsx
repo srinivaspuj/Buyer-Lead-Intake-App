@@ -12,9 +12,9 @@ export default function Home() {
     if (status === 'loading') return;
     
     if (session) {
-      router.replace('/buyers');
+      router.push('/buyers');
     } else {
-      router.replace('/auth/signin');
+      router.push('/auth/signin');
     }
   }, [session, status, router]);
 

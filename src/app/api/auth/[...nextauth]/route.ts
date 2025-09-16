@@ -4,7 +4,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
-      name: 'demo',
+      id: 'demo',
+      name: 'Demo Login',
       credentials: {},
       async authorize() {
         return {
@@ -17,6 +18,23 @@ const handler = NextAuth({
   ],
   session: {
     strategy: 'jwt',
+  },
+  pages: {
+    signIn: '/auth/signin',
+  },
+  callbacks: {
+    async session({ session, token }) {
+      if (session?.user && token?.sub) {
+        (session.user as any).id = token.sub;
+      }
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.sub = user.id;
+      }
+      return token;
+    },
   },
 });
 
