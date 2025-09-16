@@ -70,7 +70,7 @@ export default function SignIn() {
             </div>
             
             <div className="mt-6 text-xs text-blue-200/80">
-              <p className="mb-2">✨ What's included:</p>
+              <p className="mb-2">✨ What is included:</p>
               <div className="space-y-1">
                 <p>• Advanced lead tracking and management</p>
                 <p>• Real-time search and intelligent filters</p>
