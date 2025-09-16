@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     const pageSize = 10;
     const offset = (page - 1) * pageSize;
     
-    let query = db.select().from(buyers);
+    const query = db.select().from(buyers);
     
     // Apply filters
     const filters = [];
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
       totalPages, 
       currentPage: page 
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to fetch buyers' }, { status: 500 });
   }
 }
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     }).returning();
 
     return NextResponse.json(newBuyer);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to create buyer' }, { status: 500 });
   }
 }

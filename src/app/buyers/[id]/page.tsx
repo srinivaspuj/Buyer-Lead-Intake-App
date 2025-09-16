@@ -18,7 +18,7 @@ function formatDate(date: Date) {
 export default function BuyerDetailPage() {
   const params = useParams();
   const [buyer, setBuyer] = useState<Buyer | null>(null);
-  const [history, setHistory] = useState<any[]>([]);
+  const [history, setHistory] = useState<{ id: string; changedAt: Date; diff: string }[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -94,7 +94,7 @@ export default function BuyerDetailPage() {
               ) : (
                 <div className="space-y-4">
                   {history.map((change) => {
-                    const diff = JSON.parse(change.diff);
+                    const diff = JSON.parse(change.diff) as { action: string; data?: Record<string, unknown> };
                     return (
                       <div key={change.id} className="border-l-2 border-blue-200 pl-4">
                         <div className="text-sm font-medium text-gray-900">

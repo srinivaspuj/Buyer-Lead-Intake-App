@@ -33,7 +33,7 @@ export async function importCSV(csvContent: string, userId: string): Promise<CSV
     };
   }
 
-  const data = result.data as any[];
+  const data = result.data as Record<string, unknown>[];
   if (data.length > 200) {
     return {
       success: false,
@@ -43,7 +43,7 @@ export async function importCSV(csvContent: string, userId: string): Promise<CSV
   }
 
   const errors: CSVError[] = [];
-  const validRows: any[] = [];
+  const validRows: Record<string, unknown>[] = [];
 
   // Validate each row
   data.forEach((row, index) => {
@@ -64,7 +64,7 @@ export async function importCSV(csvContent: string, userId: string): Promise<CSV
         source: row.source?.trim(),
         status: row.status?.trim() || 'New',
         notes: row.notes?.trim() || undefined,
-        tags: row.tags ? row.tags.split(',').map((t: string) => t.trim()).filter(Boolean) : undefined,
+        tags: row.tags ? (row.tags as string).split(',').map((t: string) => t.trim()).filter(Boolean) : undefined,
       };
 
       const validation = buyerSchema.safeParse(processedRow);
@@ -139,7 +139,7 @@ export async function importCSV(csvContent: string, userId: string): Promise<CSV
   }
 }
 
-export function exportToCSV(buyerData: any[]): string {
+export function exportToCSV(buyerData: Record<string, unknown>[]): string {
   const csvData = buyerData.map(buyer => ({
     fullName: buyer.fullName,
     email: buyer.email || '',

@@ -34,10 +34,9 @@ function formatDate(date: Date) {
 }
 
 export default function BuyersPage() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const [buyers, setBuyers] = useState<Buyer[]>([]);
   const [loading, setLoading] = useState(true);
-  const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useState({
     search: '',
@@ -54,13 +53,12 @@ export default function BuyersPage() {
       try {
         const params = new URLSearchParams({
           page: currentPage.toString(),
-          ...Object.fromEntries(Object.entries(searchParams).filter(([_, v]) => v))
+          ...Object.fromEntries(Object.entries(searchParams).filter(([, v]) => v))
         });
         const response = await fetch(`/api/buyers?${params}`);
         if (response.ok) {
           const data = await response.json();
           setBuyers(data.buyers);
-          setTotalPages(data.totalPages);
         }
       } catch (error) {
         console.error('Error fetching buyers:', error);

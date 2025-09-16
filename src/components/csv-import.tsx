@@ -60,7 +60,7 @@ export default function CSVImport() {
       // });
       // const result: ImportResult = await response.json();
       
-    } catch (error) {
+    } catch {
       setResult({
         success: false,
         imported: 0,

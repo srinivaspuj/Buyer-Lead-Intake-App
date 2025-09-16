@@ -4,7 +4,7 @@ import { db } from './db';
 import { buyers, buyerHistory } from './db/schema';
 import { buyerSchema } from './validations';
 import { auth } from './auth';
-import { eq, and, like, or, desc, asc } from 'drizzle-orm';
+import { eq, and, like, or, desc } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 

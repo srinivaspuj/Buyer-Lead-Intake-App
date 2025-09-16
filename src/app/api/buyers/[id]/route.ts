@@ -16,7 +16,7 @@ export async function GET(
     }
 
     return NextResponse.json(buyer);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to fetch buyer' }, { status: 500 });
   }
 }
@@ -46,7 +46,7 @@ export async function PUT(
     }
 
     return NextResponse.json(updatedBuyer);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to update buyer' }, { status: 500 });
   }
 }
