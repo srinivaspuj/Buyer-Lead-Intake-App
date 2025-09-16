@@ -32,7 +32,7 @@ export default function ImportPage() {
             <li>• <strong>BHK is required</strong> for Apartment and Villa property types</li>
             <li>• <strong>Phone:</strong> 10-15 digits only</li>
             <li>• <strong>Budget:</strong> budgetMax must be ≥ budgetMin if both provided</li>
-            <li>• <strong>Tags:</strong> comma-separated values (e.g., "urgent, premium")</li>
+            <li>• <strong>Tags:</strong> comma-separated values (e.g., urgent, premium)</li>
             <li>• <strong>Maximum:</strong> 200 rows per import</li>
           </ul>
         </div>

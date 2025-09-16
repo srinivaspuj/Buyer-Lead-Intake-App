@@ -73,7 +73,7 @@ export default function SignIn() {
               <p className="mb-2">✨ What's included:</p>
               <div className="space-y-1">
                 <p>• Advanced lead tracking and management</p>
-                <p>• Real-time search & intelligent filters</p>
+                <p>• Real-time search and intelligent filters</p>
                 <p>• Seamless CSV import/export tools</p>
                 <p>• Beautiful analytics dashboard</p>
               </div>
